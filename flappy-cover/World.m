@@ -5,6 +5,8 @@ classdef World < handle
       ax = [];  % and an axis for plotting
       dt = 1/20;
       
+      pipex = [0 0.9 1 1.1 1.2 
+      lb = [
       themes = struct('main',[],'death',[],'win',[]);
   end
 
@@ -16,9 +18,13 @@ classdef World < handle
           self.ax = axes(self.fig, 'Position',[0 0 1 1]);
           self.ax.DataAspectRatio = [1 1 1]; % set to have axis equal
           self.ax.XLim = [-320 6400];
-          self.ax.YLim = [0 480];
+          self.ax.YLim = [-20 480];
           self.ax.Color = [0.7 0.7 1];
           self.dt = 1/20;
+
+          grass = rectangle(self.ax,'Position',[-320 -30 6400 30],'FaceColor',[240 230 140]/255,...
+              'EdgeColor','g','LineWidth',2);
+          
           
           [Y,FS] = audioread('sounds/usmchymn.wav');
           self.themes.main = audioplayer(Y,FS);
